@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤗弟子規</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mode Selection -->
+        <div id="mode-selection">
+            <h1>🎮 選擇遊戲模式</h1>
+            <div class="mode-grid">
+                <div class="mode-card" data-mode="fill">
+                    <h2>📝 填空挑戰</h2>
+                    <p>選擇正確的缺失部分！</p>
+                </div>
+                <div class="mode-card" data-mode="timed">
+                    <h2>⏱️ 限時挑戰</h2>
+                    <p>在時間內回答最多問題！</p>
+                </div>
+                <div class="mode-card" data-mode="review">
+                    <h2>📖 複習模式</h2>
+                    <p>輕鬆複習弟子規！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Selection -->
+        <div id="section-selection" style="display: none;">
+            <h1>📖 選擇章節</h1>
+            <button class="fun-button" onclick="showModeSelection()">↩️ 返回模式選擇</button>
+            <div class="section-grid" id="sections"></div>
+        </div>
+
+        <!-- Fill-in Game -->
+        <div id="fill-game" class="game-panel" style="display: none;">
+            <h2>📝 填空挑戰</h2>
+            <div class="score-board">
+                <span>🏆 分數: <span id="score">0</span></span>
+                <span>📝 問題: <span id="question-count">0/5</span></span>
+            </div>
+            <p id="question" style="font-size: 1.8rem;"></p>
+            <div class="section-grid" id="options"></div>
+        </div>
+
+        <!-- Timed Game -->
+        <div id="timed-game" class="game-panel" style="display: none;">
+            <h2>⏱️ 限時挑戰</h2>
+            <div class="score-board">
+                <span>🏆 分數: <span id="timed-score">0</span></span>
+                <span>⏳ 時間: <span id="timer">30</span> 秒</span>
+            </div>
+            <p id="timed-question" style="font-size: 1.8rem;"></p>
+            <div class="section-grid" id="timed-options"></div>
+        </div>
+
+        <!-- Review Mode -->
+        <div id="review-game" class="game-panel" style="display: none;">
+            <h2>📖 複習模式</h2>
+            <div class="score-board">
+                <span>📖 當前句子: <span id="review-index">1</span>/<span id="review-total">8</span></span>
+            </div>
+            <p id="review-phrase" style="font-size: 1.8rem;"></p>
+            <p id="review-definition" style="font-size: 1.2rem; color: #555;"></p>
+            <button class="fun-button" onclick="prevReviewPhrase()">上一句</button>
+            <button class="fun-button" onclick="nextReviewPhrase()">下一句</button>
+            <button class="fun-button" onclick="returnToSectionSelection()">完成</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results" class="results-panel" style="display: none;">
+            <h2>🎉 遊戲結束！</h2>
+            <p>你答對了 <span id="correct-answers">0</span> 題，答錯了 <span id="wrong-answers">0</span> 題。</p>
+            <p>最終分數: <span id="final-score">0</span> / 50</p>
+            <button class="fun-button" onclick="returnToSectionSelection()">🏠 返回章節選擇</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="timesults" class="results-panel" style="display: none;">
+            <h2>🎉 遊戲結束！</h2>
+            <p>你答對了 <span id="correct-timesers">0</span> 題，答錯了 <span id="wrong-timesers">0</span> 題。</p>
+            <p>最終分數: <span id="final-timesers">0</p>
+                <button class="fun-button" onclick="returnToSectionSelection()">🏠 返回章節選擇</button>
+        </div>
+    </div>
+
+    <script src="poem.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

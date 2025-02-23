@@ -1,0 +1,109 @@
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+}
+
+body {
+    font-family: 'Comic Neue', 'Noto Sans TC', cursive;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #2d3436;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Mode Selection */
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 30px;
+}
+
+.mode-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border: 4px solid var(--primary);
+}
+
+.mode-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Section Selection */
+.section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid var(--secondary);
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Game Panels */
+.game-panel {
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    margin: 30px 0;
+}
+
+/* Results Screen */
+.results-panel {
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    margin: 30px 0;
+}
+
+.results-panel h2 {
+    color: var(--primary);
+}
+
+/* Buttons & Score */
+.fun-button {
+    background: var(--accent);
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.score-board {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
