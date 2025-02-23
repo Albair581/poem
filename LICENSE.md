@@ -1,4 +1,4 @@
-Copyright (c) 2025 [Your Name or Organization]
+**Copyright (c) 2025 Albert Huang**  
 All Rights Reserved.
 
 1. **Viewing and Sharing**:
