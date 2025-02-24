@@ -189,7 +189,7 @@ function loadReviewPhrase() {
 function hearReviewPhrase(audio) {
     const voices = window.speechSynthesis.getVoices();
     const msg = new SpeechSynthesisUtterance(audio.dataset.phrase);
-    msg.voice = voices[7];
+    // msg.voice = voices[7];
     msg.rate = 0.75;
     msg.lang = "zh-TW";
     window.speechSynthesis.speak(msg);
