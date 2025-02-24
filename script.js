@@ -127,7 +127,7 @@ function loadFillQuestion() {
             }
             questionCount++;
             updateScoreDisplay();
-            setTimeout(loadFillQuestion, 1000);
+            setTimeout(loadFillQuestion, 250);
         });
     });
 }
@@ -169,8 +169,10 @@ function loadTimedQuestion() {
                 wrongAnswers++;
                 opt.style.background = '#f44336';
             }
+
             updateTimedDisplay();
-            setTimeout(loadTimedQuestion, 800);
+            setTimeout(loadTimedQuestion, 250);
+            // loadTimedQuestion();
         });
     });
 }
@@ -181,6 +183,16 @@ function loadReviewPhrase() {
     document.getElementById('review-definition').textContent = definitions[currentSection[reviewIndex]];
     document.getElementById('review-index').textContent = reviewIndex + 1;
     document.getElementById('review-total').textContent = currentSection.length;
+    document.getElementById('aud-button').dataset.phrase = pronunciations[currentSection[reviewIndex]] + "。" + defPro[currentSection[reviewIndex]];
+}
+
+function hearReviewPhrase(audio) {
+    const voices = window.speechSynthesis.getVoices();
+    const msg = new SpeechSynthesisUtterance(audio.dataset.phrase);
+    msg.voice = voices[7];
+    msg.rate = 0.75;
+    msg.lang = "zh-TW";
+    window.speechSynthesis.speak(msg);
 }
 
 function nextReviewPhrase() {
