@@ -121,13 +121,15 @@ function loadFillQuestion() {
                 ih += "</rt>";
             });
         } else {
-            ih += "<rb>___</rb>";
+            ih += "___";
             ih += "<rt></rt>";
         }
         if (i <= 3) {
             ih += "，";
+            ih += "<rt></rt>";
         }
     }
+    alert(ih);
     document.getElementById('question').innerHTML = ih;
     document.getElementById('question-count').textContent = `${questionCount + 1}/5`;
     
@@ -188,11 +190,12 @@ function loadTimedQuestion() {
                 ih += "</rt>";
             });
         } else {
-            ih += "<rb>___</rb>";
+            ih += "___";
             ih += "<rt></rt>";
         }
         if (i <= 3) {
             ih += "，";
+            ih += "<rt></rt>";
         }
     }
     document.getElementById('timed-question').innerHTML = ih;
