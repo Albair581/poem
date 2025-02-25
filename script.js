@@ -129,7 +129,6 @@ function loadFillQuestion() {
             ih += "<rt></rt>";
         }
     }
-    alert(ih);
     document.getElementById('question').innerHTML = ih;
     document.getElementById('question-count').textContent = `${questionCount + 1}/5`;
     
