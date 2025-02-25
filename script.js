@@ -115,9 +115,7 @@ function loadFillQuestion() {
             console.log(q.split(""));
             console.log(bpm[q.split])
             bpm[q].split('|').forEach((char, idx) => {
-                ih += "<rb>";
                 ih += q[idx];
-                ih += "</rb>";
                 ih += "<rt>";
                 ih += char;
                 ih += "</rt>";
