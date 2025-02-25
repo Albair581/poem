@@ -129,6 +129,8 @@ function loadFillQuestion() {
             ih += "<rt></rt>";
         }
     }
+    
+    // load ruby html into innerHTML property
     document.getElementById('question').innerHTML = ih;
     document.getElementById('question-count').textContent = `${questionCount + 1}/5`;
     
