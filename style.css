@@ -45,7 +45,7 @@ body {
 /* Section Selection */
 .section-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     gap: 20px;
     padding: 20px;
 }
@@ -63,6 +63,10 @@ body {
 .section-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.section-card ruby {
+    font-size: 1.75rem;
 }
 
 /* Game Panels */

@@ -105,19 +105,44 @@ function loadFillQuestion() {
     // 生成選項
     const options = [correctAnswer, ...getRandomPhrases(3)];
 
-    document.getElementById('question').textContent = question;
+
+    let ih = "";
+    for (let i = 1; i <= 4; i++) {
+        const start = (i == 1) ? 0 : ((i == 2) ? 4 : ((i == 3) ? 8 : 12));
+        const q = question.slice(start, start + 3);
+        if (q !== "___") {
+            console.log(bpm);
+            console.log(q.split(""));
+            console.log(bpm[q.split])
+            bpm[q].split('|').forEach((char, idx) => {
+                ih += "<rb>";
+                ih += q[idx];
+                ih += "</rb>";
+                ih += "<rt>";
+                ih += char;
+                ih += "</rt>";
+            });
+        } else {
+            ih += "<rb>___</rb>";
+            ih += "<rt></rt>";
+        }
+        if (i <= 3) {
+            ih += "，";
+        }
+    }
+    document.getElementById('question').innerHTML = ih;
     document.getElementById('question-count').textContent = `${questionCount + 1}/5`;
     
     const optionsDiv = document.getElementById('options');
     optionsDiv.innerHTML = shuffle(options).map(opt => `
-        <div class="section-card answer-option">
-            <h3>${opt}</h3>
+        <div class="section-card answer-option" data-ans="${opt}">
+            <ruby>${opt[0] + "<rt>" + bpm[opt].split('|')[0] + "</rt>" + opt[1] + "<rt>" + bpm[opt].split('|')[1] + "</rt>" + opt[2] + "<rt>" + bpm[opt].split('|')[2] + "</rt>"}</ruby>
         </div>
     `).join('');
 
     optionsDiv.querySelectorAll('.answer-option').forEach(opt => {
         opt.addEventListener('click', () => {
-            if (opt.textContent.trim() === correctAnswer) {
+            if (opt.dataset.ans.trim() === correctAnswer) {
                 score += 10;
                 correctAnswers++;
                 opt.style.background = '#4CAF50';
@@ -150,18 +175,42 @@ function loadTimedQuestion() {
     // 生成選項
     const options = [correctAnswer, ...getRandomPhrases(3)];
 
-    document.getElementById('timed-question').textContent = question;
+    let ih = "";
+    for (let i = 1; i <= 4; i++) {
+        const start = (i == 1) ? 0 : ((i == 2) ? 4 : ((i == 3) ? 8 : 12));
+        const q = question.slice(start, start + 3);
+        if (q !== "___") {
+            console.log(bpm);
+            console.log(q.split(""));
+            console.log(bpm[q.split])
+            bpm[q].split('|').forEach((char, idx) => {
+                ih += "<rb>";
+                ih += q[idx];
+                ih += "</rb>";
+                ih += "<rt>";
+                ih += char;
+                ih += "</rt>";
+            });
+        } else {
+            ih += "<rb>___</rb>";
+            ih += "<rt></rt>";
+        }
+        if (i <= 3) {
+            ih += "，";
+        }
+    }
+    document.getElementById('timed-question').innerHTML = ih;
     
     const optionsDiv = document.getElementById('timed-options');
     optionsDiv.innerHTML = shuffle(options).map(opt => `
-        <div class="section-card answer-option">
-            <h3>${opt}</h3>
+        <div class="section-card answer-option" data-ans="${opt}">
+            <ruby>${opt[0] + "<rt>" + bpm[opt].split('|')[0] + "</rt>" + opt[1] + "<rt>" + bpm[opt].split('|')[1] + "</rt>" + opt[2] + "<rt>" + bpm[opt].split('|')[2] + "</rt>"}</ruby>
         </div>
     `).join('');
 
     optionsDiv.querySelectorAll('.answer-option').forEach(opt => {
         opt.addEventListener('click', () => {
-            if (opt.textContent.trim() === correctAnswer) {
+            if (opt.dataset.ans.trim() === correctAnswer) {
                 score += 10;
                 correctAnswers++;
                 opt.style.background = '#4CAF50';
@@ -179,7 +228,14 @@ function loadTimedQuestion() {
 
 // 複習模式邏輯
 function loadReviewPhrase() {
-    document.getElementById('review-phrase').textContent = currentSection[reviewIndex];
+    let ih = "";
+    bpm[currentSection[reviewIndex]].split('|').forEach((char, idx) => {
+        ih += currentSection[reviewIndex][idx];
+        ih += "<rt>";
+        ih += char;
+        ih += "</rt>";
+    });
+    document.getElementById('review-phrase').innerHTML = ih;
     document.getElementById('review-definition').textContent = definitions[currentSection[reviewIndex]];
     document.getElementById('review-index').textContent = reviewIndex + 1;
     document.getElementById('review-total').textContent = currentSection.length;
@@ -189,7 +245,7 @@ function loadReviewPhrase() {
 function hearReviewPhrase(audio) {
     const voices = window.speechSynthesis.getVoices();
     const msg = new SpeechSynthesisUtterance(audio.dataset.phrase);
-    msg.voice = voices[7];
+    // msg.voice = voices[7];
     msg.rate = 0.75;
     msg.lang = "zh-TW";
     window.speechSynthesis.speak(msg);
